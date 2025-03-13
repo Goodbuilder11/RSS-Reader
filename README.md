@@ -1,3 +1,5 @@
+![RSS Reader Logo](RSS-Reader.png)
+
 # RSS Reader
 
 ## Description
