@@ -44,6 +44,25 @@ def website_info(websites):
             print("Invalid RSS feed.")
         print("-" * 40)
 
+        if 'entries' in d:
+            print("Would you like to see the all the entries? (y/n)")
+            show_entries = input("Enter 'y' to show entries (There are {} entries.)\n".format(len(d.entries)))
+            if show_entries.lower() == 'y':
+                print("Entries:")
+                for entry in d.entries:
+                    if 'title' in entry:
+                        print("Entry Title:", entry.title)
+                    if 'link' in entry:
+                        print("Entry Link:", entry.link)
+                    if 'description' in entry:
+                        print("Entry Description:", entry.description)
+                    if 'published' in entry:
+                        print("Entry Published:", entry.published)
+                    print("-" * 40)
+        else:
+            print("No entries found in the RSS feed.")
+        print("-" * 40)
+
 
 def main():
     """
@@ -57,3 +76,4 @@ def main():
         print("Please enter a valid link.")
 if __name__ == "__main__":
     main()
+
