@@ -40,7 +40,7 @@ uv run main.py
 * http://feeds.washingtonpost.com/rss/world
 * https://www.globalissues.org/news/feed
 * https://www.mirror.co.uk/news/world-news/rss.xml
-* https://www.huffpost.com/section/front-page/feed
+* https://www.huffpost.com/section/front-page/feed # No Entries
 * https://feeds.abcnews.com/abcnews/topstories
 
 

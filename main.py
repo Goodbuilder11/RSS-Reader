@@ -44,9 +44,9 @@ def website_info(websites):
             print("Invalid RSS feed.")
         print("-" * 40)
 
-        if 'entries' in d:
-            print("Would you like to see the all the entries? (y/n)")
-            show_entries = input("Enter 'y' to show entries (There are {} entries.)\n".format(len(d.entries)))
+        if 'entries' in d and len(d.entries) > 0:
+            print(f"{len(d.entries)} Entries found in the RSS feed:")
+            show_entries = input("Would you like to print all the entries? [y/n]: ")
             if show_entries.lower() == 'y':
                 print("Entries:")
                 for entry in d.entries:
@@ -62,6 +62,7 @@ def website_info(websites):
         else:
             print("No entries found in the RSS feed.")
         print("-" * 40)
+
 
 
 def main():
