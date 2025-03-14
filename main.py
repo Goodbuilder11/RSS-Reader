@@ -3,6 +3,7 @@ This script fetches and displays the title, link, and description
 of an RSS feed from a given website URL.
 """
 
+from math import e
 import feedparser
 
 def get_valid_url():
@@ -25,6 +26,29 @@ def get_valid_url():
             print("Invalid URL. Please enter a valid URL starting with http:// or https://")
     return urls
 
+def print_entries(entries):
+    """
+    Prints the title, link, description, and published date of each entry in the RSS feed.
+    """
+    if entries and len(entries) > 0:
+        print(f"{len(entries)} entries found in the RSS feed:")
+        show_entries = input("Would you like to print all the entries? [y/n]: ")
+        if show_entries.lower() == 'y':
+            print("Entries:")
+            for entry in entries:
+                if entry.get('title'):
+                    print("Entry Title:", entry.title)
+                if entry.get('link'):
+                    print("Entry Link:", entry.link)
+                if entry.get('description'):
+                    print("Entry Description:", entry.description)
+                if entry.get('published'):
+                    print("Entry Published:", entry.published)
+                print("-" * 40)
+    else:
+        print("No entries found in the RSS feed.")
+    print("-" * 40)
+
 
 def website_info(websites):
     """
@@ -40,29 +64,11 @@ def website_info(websites):
                 print("Feed Link:", d.feed.link)
             if 'description' in d.feed:
                 print("Feed Description:", d.feed.description)
+            print("-" * 40)
+            print_entries(d.entries)
         else:
             print("Invalid RSS feed.")
         print("-" * 40)
-
-        if 'entries' in d and len(d.entries) > 0:
-            print(f"{len(d.entries)} Entries found in the RSS feed:")
-            show_entries = input("Would you like to print all the entries? [y/n]: ")
-            if show_entries.lower() == 'y':
-                print("Entries:")
-                for entry in d.entries:
-                    if 'title' in entry:
-                        print("Entry Title:", entry.title)
-                    if 'link' in entry:
-                        print("Entry Link:", entry.link)
-                    if 'description' in entry:
-                        print("Entry Description:", entry.description)
-                    if 'published' in entry:
-                        print("Entry Published:", entry.published)
-                    print("-" * 40)
-        else:
-            print("No entries found in the RSS feed.")
-        print("-" * 40)
-
 
 
 def main():
@@ -75,6 +81,8 @@ def main():
         website_info(website)
     else:
         print("Please enter a valid link.")
+
+    
 if __name__ == "__main__":
     main()
-
+    
