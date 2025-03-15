@@ -3,7 +3,6 @@ This script fetches and displays the title, link, and description
 of an RSS feed from a given website URL.
 """
 
-from math import e
 import feedparser
 
 def get_valid_url():
@@ -81,8 +80,6 @@ def main():
         website_info(website)
     else:
         print("Please enter a valid link.")
-
-    
 if __name__ == "__main__":
     main()
     
