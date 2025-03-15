@@ -59,11 +59,11 @@ def website_info(websites):
         d = feedparser.parse(website)
         if 'feed' in d:
             if 'title' in d.feed:
-                print("Feed Title:", d.feed.title)
+                print("Feed Title:", d.feed.title) # type: ignore
             if 'link' in d.feed:
-                print("Feed Link:", d.feed.link)
+                print("Feed Link:", d.feed.link) # type: ignore
             if 'description' in d.feed:
-                print("Feed Description:", d.feed.description)
+                print("Feed Description:", d.feed.description) # type: ignore
             print("-" * 40)
             print_entries(d.entries)
         else:
